@@ -4,7 +4,6 @@
 
 # Variables
 LOG_FILE="/var/log/update_script_$(date +%F).log"
-FLAG_FILE="/var/run/update_flag"
 
 # Function to check for required commands
 function check_command {
@@ -29,11 +28,13 @@ sudo yum autoremove -y
 
 # Update Security Onion components
 echo "[$(date)] Updating Security Onion components..."
-yes | sudo soup || { echo "Security Onion update failed. Aborting."; exit 1; }
-yes | sudo soup || { echo "Security Onion update failed. Aborting."; exit 1; }
-yes | sudo soup || { echo "Security Onion update failed. Aborting."; exit 1; }
+yes | sudo soap || { echo "Security Onion update failed. Aborting."; exit 1; }
 
-# Rebooting is required
+# Check if a reboot is required
+if [ -f /var/run/reboot-required ]; then
+    echo "[$(date)] Reboot required."
+fi
+
+# Reboot the system
 echo "[$(date)] Rebooting now..."
-touch "$FLAG_FILE"
 sudo reboot
