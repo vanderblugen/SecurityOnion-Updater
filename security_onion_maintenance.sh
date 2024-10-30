@@ -29,6 +29,8 @@ sudo yum autoremove -y
 # Update Security Onion components
 echo "[$(date)] Updating Security Onion components..."
 yes | sudo soap || { echo "Security Onion update failed. Aborting."; exit 1; }
+yes | sudo soap || { echo "Security Onion update failed. Aborting."; exit 1; }
+yes | sudo soap || { echo "Security Onion update failed. Aborting."; exit 1; }
 
 # Check if a reboot is required
 if [ -f /var/run/reboot-required ]; then
