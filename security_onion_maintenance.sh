@@ -39,4 +39,4 @@ fi
 
 # Reboot the system
 echo "[$(date)] Rebooting now..."
-sudo reboot
+sudo reboot now
