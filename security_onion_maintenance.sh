@@ -84,7 +84,7 @@ fi
 
 # Restart Kibana
 log_message "Restarting Kibana..."
-so-kibana-restart
+so-kibana-restart --force
 if [ $? -eq 0 ]; then
     log_message "Kibana restarted successfully."
 else
